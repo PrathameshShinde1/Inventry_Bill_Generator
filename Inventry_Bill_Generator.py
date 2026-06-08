@@ -54,102 +54,89 @@ for company, item in products.items():
     for model, price in item.items():
         print(f"    - {model} & {price} ₹ ")
 
- 
+cart = []
 
-# match user_choice:
-#     case "redmi":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case "realme":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case "apple":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case "vivo":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case "poco":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case "onePlus":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case "samsung":
-#         for company, item in products.items():
-#             print(f"Available {company} Mobiles are here -->")
-#             for model, price in item.items():
-#                 print(f"    -{model} & {price}")
-#             break
-#     case _:
-#         print("Please enter valid Mobile Company name!!!")
+while True:
+    buy = str(input("Do you want to purchase anything (Y/N) : ").lower())
 
-#---------------------------------------------------------------------------
+    if buy != 'y':
+        print("<======Cart======>")
+        for item in cart:
+            print(item['model'], "-", item['price'])
 
-buy = str(input("Do you want to purchase anything (Y/N) : ").lower())
+        total = 0
+        for item in cart:
+            total += item['price']
+        
+        print("Total amount : ", total)
 
-while buy=="y":
-    cart = []
+        print("Thank you for visiting!")
+        break;
 
-    user_choice = str(input("Enter the company name which you want to buy a mobile : ").lower())
+    user_choice = input("Enter the company name which you want to buy a mobile : ").lower()
 
-    if user_choice == "redmi":
-        print(f"Available {user_choice} mobile are here -->")
-        for index, (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter} - {model} & {price} ₹")
-    elif user_choice == "realme":
-        print(f"Available {user_choice} mobile are here -->")
-        for index, (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter} - {model} & {price} ₹")
-    elif user_choice == "apple":
-        print(f"Available {user_choice} mobile are here -->")
-        for index , (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter} - {model} & {price} ₹")
-    elif user_choice == "vivo":
-        print(f"Available {user_choice} mobile are here -->")
-        for index, (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter} - {model} & {price} ₹")
-    elif user_choice == "poco":
-        print(f"Available {user_choice} mobile are here -->")
-        for index, (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter} - {model} & {price} ₹")
-    elif user_choice == "oneplus":
-        print(f"Available {user_choice} mobile are here -->")
-        for index, (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter}  - {model} & {price} ₹")
-    elif user_choice == "samsung":
-        print(f"Available {user_choice} mobile are here -->")
-        for index, (model, price) in enumerate(products[user_choice].items()):
-            letter = chr(97 + index)
-            print(f" {letter}  - {model} & {price} ₹")
-    else:
-        print("Please enter a valid Company name!!!")
+    if user_choice not in products:
+        print("Enter a available items...")
+        continue;
+
+    # if user_choice == "redmi":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index, (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter} - {model} & {price} ₹")
+    # elif user_choice == "realme":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index, (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter} - {model} & {price} ₹")
+    # elif user_choice == "apple":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index , (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter} - {model} & {price} ₹")
+    # elif user_choice == "vivo":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index, (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter} - {model} & {price} ₹")
+    # elif user_choice == "poco":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index, (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter} - {model} & {price} ₹")
+    # elif user_choice == "oneplus":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index, (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter}  - {model} & {price} ₹")
+    # elif user_choice == "samsung":
+    #     print(f"Available {user_choice} mobile are here -->")
+    #     for index, (model, price) in enumerate(products[user_choice].items()):
+    #         letter = chr(97 + index)
+    #         print(f" {letter}  - {model} & {price} ₹")
+    # else:
+    #     print("Please enter a valid Company name!!!")
     
-    Model_Choice_To_Buy = str(input("Enter the character assosiated with the model : "))
-    cart.append(Model_Choice_To_Buy)
-    print(cart)
-    break;
+    print(f"\nAvailable {user_choice} mobiles are here -->")
+
+    for index, (model, price) in enumerate(products[user_choice].items()):
+        letter = chr(97 + index)
+        print(f"{letter} - {model} & ₹{price}")
+        
+    models = list(products[user_choice].items())
+    choice = input("Enter the Character of Model : ").lower()
+    index = ord(choice) - ord("a")
+
+    if index < 0 or index >= len(models):
+        print("Invalid model Choice")
+        continue
+
+    model_name, price = models[index]
+
+    cart.append({
+        "model" : model_name,
+        "price" : price
+    })
+    # print("Added items - ", cart)
+    print("Cart added successfully!")
+
